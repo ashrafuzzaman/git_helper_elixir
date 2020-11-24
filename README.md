@@ -1,21 +1,11 @@
 # GitHelper
 
 **TODO: Add description**
-
+This is a git helper CLI built with Elixir.
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `git_helper` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:git_helper, "~> 0.1.0"}
-  ]
-end
+Compile the project in to a CLI.
+```bash
+$ mix escript.build
+$ ./git_helper --review ashrafuzzaman:test-branch
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/git_helper](https://hexdocs.pm/git_helper).
-
