@@ -3,7 +3,7 @@ defmodule Mix.Tasks.Review do
 
   @moduledoc "Review github PRs, sample, $mix review ashrafuzzaman:test_branch"
   @shortdoc "Review github PRs"
-  @spec run([String.t]) :: any
+  @spec run([String.t()]) :: any
   def run(args) do
     remote_and_branch = List.first(args)
     shell = Mix.shell()
