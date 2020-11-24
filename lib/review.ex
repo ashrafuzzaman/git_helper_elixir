@@ -3,15 +3,25 @@ defmodule Mix.Tasks.Review do
 
   @moduledoc "Review github PRs, sample, $mix review ashrafuzzaman:test_branch"
   @shortdoc "Review github PRs"
-
+  @spec run([String.t]) :: any
   def run(args) do
-    origin_branch = List.first(args)
+    remote_and_branch = List.first(args)
     shell = Mix.shell()
-    unless origin_branch do
-      shell.error("Missing args <origin>:<branch>")
+
+    unless remote_and_branch do
+      shell.error("Missing args <remote_name>:<branch>")
     else
-      [origin, branch] = String.split(origin_branch, ":")
-      shell.info("Running Review script #{origin}:#{branch}")
+      [remote_name, branch] = String.split(remote_and_branch, ":")
+      repo_name = GitHelper.get_repo_name()
+
+      if GitHelper.remote_exists?(remote_name) do
+        shell.info("The remote #{remote_name} is already there")
+      else
+        shell.info("Adding remote #{remote_name}")
+        GitHelper.add_remote!(remote_name)
+      end
+
+      shell.info("Running Review script #{repo_name} #{remote_name}:#{branch}")
     end
   end
 end
