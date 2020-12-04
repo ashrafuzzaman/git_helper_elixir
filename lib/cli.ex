@@ -2,10 +2,10 @@ defmodule GitHelper.CLI do
   @spec main([String.t()]) :: any
   def main(args) do
     options = [strict: [review: :string]]
-    {opts, _, _} = OptionParser.parse(args, options)
+    {[{action, params}], _, _} = OptionParser.parse(args, options)
 
-    if opts[:review] do
-      Mix.Tasks.Review.run(opts[:review])
+    case action do
+      :review -> Mix.Tasks.Review.run(params)
     end
   end
 end
