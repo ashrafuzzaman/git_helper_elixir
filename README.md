@@ -8,3 +8,8 @@ Compile the project in to a CLI.
 ```bash
 $ mix escript.build && ./git_helper --review ashrafuzzaman:test-branch
 ```
+
+Release the script to user bin
+```bash
+$ ./release.sh
+```
